@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="id" class="light">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>{% block title %}{{ app_name }}{% endblock %}</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23C8F31D'/><text x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-size='18'>💚</text></svg>">
+  <meta property="og:title" content="{{ app_name }} — Ruang Aman untuk Bercerita"/>
+  <meta property="og:description" content="Platform curhat anonim gratis untuk anak muda Indonesia."/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/tailwind.css') }}">
+  {% include "components/_design_tokens.html" %}
+  <style>
+    body{background:#F9F9F8;font-family:'Inter',sans-serif}
+    .ambient-shadow{box-shadow:0 10px 30px rgba(0,0,0,.05)}
+  </style>
+  {% block head_extra %}{% endblock %}
+</head>
+<body class="{% block body_class %}text-on-surface bg-surface{% endblock %}">
+  {% block body_content %}
+  {% include "components/_navbar.html" %}
+  {% include "components/_toast.html" %}
+  <main class="min-h-screen">{% block content %}{% endblock %}</main>
+  {% include "components/_footer.html" %}
+  {% endblock %}
+  {% block scripts %}{% endblock %}
+</body>
+</html>
